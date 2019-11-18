@@ -20,7 +20,7 @@ implementation 'com.github.BugRui:LiveDataBus:1.0.0'
 
 订阅
 
-```
+```java
 LiveDataBus.get("main")
                 .observe(this, new Observer<Object>() {
                     @Override
@@ -33,7 +33,7 @@ LiveDataBus.get("main")
 
 发布
 
-```
+```java
 
   LiveDataBus.send("main","收到一条消息");
 
