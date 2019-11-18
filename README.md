@@ -2,7 +2,7 @@
 
 基于LiveData实现事件总线
 
-## 集成
+### 集成
 #### Step 1. Add the JitPack repository to your build file
 ```
 allprojects {
