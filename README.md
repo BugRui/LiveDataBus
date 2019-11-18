@@ -19,7 +19,7 @@ implementation 'com.github.BugRui:LiveDataBus:1.0.0'
 ```
 
 
-## 订阅
+### 订阅
 ```java
 LiveDataBus.get("main")
                 .observe(this, new Observer<Object>() {
@@ -31,9 +31,9 @@ LiveDataBus.get("main")
 
 ```
 
-## 发布
+### 发送
 ```java
 
-  LiveDataBus.send("main","收到一条消息");
+  LiveDataBus.send("main","发送一条消息");
 
 ```
