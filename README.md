@@ -2,6 +2,7 @@
 
 基于LiveData实现事件总线
 
+## Step 1. Add the JitPack repository to your build file
 ```
 allprojects {
 		repositories {
@@ -11,15 +12,13 @@ allprojects {
 	}
 
 ```
-
-
+##  Step 2. Add the dependency
 ```
 implementation 'com.github.BugRui:LiveDataBus:1.0.0'
 ```
 
 
-订阅
-
+## 订阅
 ```java
 LiveDataBus.get("main")
                 .observe(this, new Observer<Object>() {
@@ -31,8 +30,7 @@ LiveDataBus.get("main")
 
 ```
 
-发布
-
+## 发布
 ```java
 
   LiveDataBus.send("main","收到一条消息");
