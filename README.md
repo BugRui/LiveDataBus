@@ -2,7 +2,8 @@
 
 基于LiveData实现事件总线
 
-## Step 1. Add the JitPack repository to your build file
+## 集成
+#### Step 1. Add the JitPack repository to your build file
 ```
 allprojects {
 		repositories {
@@ -12,7 +13,7 @@ allprojects {
 	}
 
 ```
-##  Step 2. Add the dependency
+####  Step 2. Add the dependency
 ```
 implementation 'com.github.BugRui:LiveDataBus:1.0.0'
 ```
