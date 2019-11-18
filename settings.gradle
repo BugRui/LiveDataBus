@@ -1,0 +1,2 @@
+include ':app', ':buslib'
+rootProject.name='LiveDataBus'
