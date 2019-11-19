@@ -15,16 +15,16 @@ allprojects {
 ```
 ####  Step 2. Add the dependency
 ```
-implementation 'com.github.BugRui:LiveDataBus:1.0.0'
+implementation 'com.github.BugRui:LiveDataBus:1.0.1'
 ```
 
 
 ### 订阅
 ```java
-LiveDataBus.get("main")
-                .observe(this, new Observer<Object>() {
+LiveDataBus.<String>get("main")
+                .observe(this, new Observer<String>() {
                     @Override
-                    public void onChanged(Object o) {
+                    public void onChanged(String str) {
                         
                     }
                 });
