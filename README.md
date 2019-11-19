@@ -1,6 +1,7 @@
 # LiveDataBus
 
-基于LiveData实现事件总线
+基于LiveData实现事件总线,具备生命周期感知
+只有先进行订阅后才能收到发送的消息事件，无法接收订阅前发送的消息事件,发送后，只有页面置顶才会收到发出的消息
 
 ### 集成
 #### Step 1. Add the JitPack repository to your build file
