@@ -9,15 +9,23 @@ import java.util.Map;
 /**
  * @Author: BugRui
  * @CreateDate: 2019/9/29 14:33
- * @Description: 事件通知
+ * @Description: 事件管理
  */
 final class LiveDataBusManages {
 
-    private static final LiveDataBusManages INSTANCE = new LiveDataBusManages();
-    private Map<String, MutableLiveData<Object>> busMap;
+    private volatile static LiveDataBusManages mInstance;
+
+    private Map<String, MutableLiveData> busMap;
 
     static LiveDataBusManages getInstance() {
-        return INSTANCE;
+        if (mInstance == null) {
+            synchronized (LiveDataBusManages.class) {
+                if (mInstance == null) {
+                    mInstance = new LiveDataBusManages();
+                }
+            }
+        }
+        return mInstance;
     }
 
     private LiveDataBusManages() {
@@ -30,7 +38,8 @@ final class LiveDataBusManages {
      * @param tag 事件标识
      * @return
      */
-    MutableLiveData<Object> with(String tag) {
+    @SuppressWarnings("unchecked")
+    <T> MutableLiveData<T> with(@NonNull String tag) {
         busMap.put(tag, new MutableLiveData<>());
         return busMap.get(tag);
     }
@@ -39,13 +48,14 @@ final class LiveDataBusManages {
      * 发送事件
      *
      * @param tag    事件标识
-     * @param object 附带内容
+     * @param t 附带内容
      */
-    void send(String tag,@NonNull Object object) {
+    @SuppressWarnings("unchecked")
+    <T> void send(@NonNull String tag, @NonNull T t) {
         if (busMap.get(tag) == null) return;
-        MutableLiveData<Object> liveData = busMap.get(tag);
+        MutableLiveData liveData = busMap.get(tag);
         if (liveData == null) return;
-        liveData.setValue(object);
+        liveData.postValue(t);
     }
 
 

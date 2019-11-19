@@ -15,20 +15,19 @@ public class LiveDataBus {
     }
 
 
-    public static MutableLiveData<Object> get(int tag) {
+    public static <T> MutableLiveData<T> get(int tag) {
         return get(String.valueOf(tag));
     }
 
-    public static MutableLiveData<Object> get(String tag) {
+    public static <T> MutableLiveData<T> get(String tag) {
         return getBus().with(tag);
     }
 
-
-    public static void send(int tag,Object object){
+    public static <T> void send(int tag,T object){
         send(String.valueOf(tag),object);
     }
 
-    public static void send(String tag,Object object) {
+    public static <T> void send(String tag,T object) {
         getBus().send(tag,object);
     }
 

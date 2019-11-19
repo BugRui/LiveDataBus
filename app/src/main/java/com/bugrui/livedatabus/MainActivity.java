@@ -34,12 +34,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        LiveDataBus.get("main")
-                .observe(this, new Observer<Object>() {
+        LiveDataBus.<String>get("main")
+                .observe(this, new Observer<String>() {
                     @Override
-                    public void onChanged(Object o) {
-                        Snackbar.make(fab, String.valueOf(o), Snackbar.LENGTH_LONG)
-                                .setAction("Action", null).show();
+                    public void onChanged(String s) {
+                        Toast.makeText(MainActivity.this,s,Toast.LENGTH_SHORT).show();
                     }
                 });
     }
