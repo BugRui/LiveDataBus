@@ -8,11 +8,11 @@
 #### Step 1. Add the JitPack repository to your build file
 ```
 allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
+	repositories {
+		...
+		maven { url 'https://jitpack.io' }
 	}
+}
 
 ```
 ####  Step 2. Add the dependency
@@ -22,20 +22,19 @@ implementation 'com.github.BugRui:LiveDataBus:1.0.1'
 
 
 ### 订阅
-```java
-LiveDataBus.<String>get("main")
-                .observe(this, new Observer<String>() {
-                    @Override
-                    public void onChanged(String str) {
-                        
-                    }
-                });
-
+```
+LiveDataBus.<String>get("tag")
+        .observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                
+            }
+        });
 ```
 
 ### 发送
-```java
+```
 
-  LiveDataBus.send("main","发送一条消息");
+  LiveDataBus.send("tag","发送一条消息");
 
 ```
