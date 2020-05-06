@@ -1,5 +1,4 @@
-# LiveDataBus
-
+# LiveDataBus  [![version](https://img.shields.io/badge/JCenter-v1.6.1-blue.svg)](https://jitpack.io/v/BugRui/LiveDataBus.svg)
 ##### 基于LiveData实现事件总线,具备生命周期感知，感知确保LiveData仅更新处于活动生命周期状态的应用程序组件观察者，
 ##### 消息发送后，只有处于活动生命周期状态才会收到发出的消息。
 
