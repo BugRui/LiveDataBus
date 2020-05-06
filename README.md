@@ -17,24 +17,35 @@ allprojects {
 ```
 ####  Step 2. Add the dependency
 ```
-implementation 'com.github.BugRui:LiveDataBus:1.0.1'
+implementation 'com.github.BugRui:LiveDataBus:1.1.0'
 ```
 
 
-### 订阅
-```
-LiveDataBus.<String>get("tag")
-        .observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                
-            }
-        });
+### 订阅普通事件消息
 ```
 
-### 发送
+LiveDataBus.with("tag")
+                .observe(this, Observer {
+                    toast("收到普通事件消息：${it.toString()}")
+                })
 ```
 
-  LiveDataBus.send("tag","发送一条消息");
+### 发送普通事件消息
+```
+ LiveDataBus.send("tag", "发送一条消息")
 
 ```
+## 订阅粘性事件消息
+```
+LiveDataBus.withStickiness("tag")
+                .observe(this, Observer {
+                    toast("收到粘性事件消息：${it.toString()}")
+                })
+```
+
+### 发送粘性事件消息
+```
+ LiveDataBus.sendStickiness("tag", "发送一条消息")
+```
+
+
