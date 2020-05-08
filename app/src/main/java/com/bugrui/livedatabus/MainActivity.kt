@@ -26,7 +26,9 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         fab = findViewById(R.id.fab)
-        fab!!.setOnClickListener { startActivity(Intent(this@MainActivity, Main2Activity::class.java)) }
+        fab!!.setOnClickListener {
+            startActivity(Intent(this@MainActivity, Main2Activity::class.java))
+        }
 
         LiveDataBus.with(10010)
                 .observe(this, Observer {
