@@ -2,6 +2,7 @@ package com.bugrui.livedatabus
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 
 import com.bugrui.buslib.LiveDataBus
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -31,8 +32,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         LiveDataBus.with(10010)
-                .observe(this, Observer {
-                    toast("收到普通事件消息：${it.toString()}")
+                .observeForever(this, Observer {
+                    Log.e("bugrui","MainActivity收到一条普通事件消息")
                 })
 
     }

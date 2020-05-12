@@ -15,14 +15,23 @@ import java.util.HashMap
 class DefaultEvent(
         private val liveDataMap: HashMap<String, MutableLiveData<Any?>>,
         private val tag: String
-) :Event{
+) : Event {
+
 
     override fun observe(activity: ComponentActivity, observer: Observer<Any?>) {
-        subscribe(activity,observer)
+        subscribe(activity, observer)
     }
 
     override fun observe(fragment: Fragment, observer: Observer<Any?>) {
-        subscribe(fragment,observer)
+        subscribe(fragment, observer)
+    }
+
+    override fun observeForever(activity: ComponentActivity, observer: Observer<Any?>) {
+        subscribeForever(activity, observer)
+    }
+
+    override fun observeForever(fragment: Fragment, observer: Observer<Any?>) {
+        subscribeForever(fragment, observer)
     }
 
     private fun subscribe(owner: LifecycleOwner, observer: Observer<Any?>) {
@@ -30,6 +39,13 @@ class DefaultEvent(
         liveDataMap[tag]?.observe(owner, Observer { o ->
             observer.onChanged(o)
         })
+    }
+
+    private fun subscribeForever(owner: LifecycleOwner, observer: Observer<Any?>) {
+        liveDataMap[tag] = MutableLiveData()
+        liveDataMap[tag]?.observeForever { o ->
+            observer.onChanged(o)
+        }
     }
 
 }
