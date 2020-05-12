@@ -18,7 +18,7 @@ allprojects {
 ```
 ####  Step 2. Add the dependency
 ```
-  implementation 'com.github.BugRui:LiveDataBus:1.2.0'
+  implementation 'com.github.BugRui:LiveDataBus:1.2.1'
 ```
 
 
