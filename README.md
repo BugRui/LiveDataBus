@@ -54,7 +54,7 @@ LiveDataBus.withStickiness("tag")
 		
 //不受生命周期的影响，只要数据更新就会收到通知	
 LiveDataBus.withStickiness("tag")
-                .observe(this, Observer {
+                .observeForever(this, Observer {
                     toast("收到粘性事件消息：${it.toString()}")
                 })
 ```
