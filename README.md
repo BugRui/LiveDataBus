@@ -1,8 +1,8 @@
-# LiveDataBus [![version](https://jitpack.io/v/BugRui/LiveDataBus.svg)](https://jitpack.io/#BugRui/LiveDataBus/1.1.0)
+# LiveDataBus [![version](https://jitpack.io/v/BugRui/LiveDataBus.svg)](https://jitpack.io/#BugRui/LiveDataBus/1.2.0)
 
 ##### 基于LiveData实现事件总线,具备生命周期感知，感知确保LiveData仅更新处于活动生命周期状态的应用程序组件观察者，
 ##### 支持粘性，消息发送后订阅也能收到发出的消息
-##### 消息发送后，只有处于活动生命周期状态才会收到发出的消息。
+##### 注意！！！消息发送后，只有处于活动生命周期状态才会收到发出的消息。
 
 
 ### 集成
@@ -18,7 +18,7 @@ allprojects {
 ```
 ####  Step 2. Add the dependency
 ```
-implementation 'com.github.BugRui:LiveDataBus:1.1.0'
+  implementation 'com.github.BugRui:LiveDataBus:1.2.0'
 ```
 
 
