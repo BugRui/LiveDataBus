@@ -4,9 +4,7 @@ import android.app.Service
 import androidx.activity.ComponentActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
+import androidx.lifecycle.*
 import java.util.HashMap
 
 /**
@@ -43,9 +41,20 @@ class DefaultEvent(
 
     private fun subscribeForever(owner: LifecycleOwner, observer: Observer<Any?>) {
         liveDataMap[tag] = MutableLiveData()
-        liveDataMap[tag]?.observeForever { o ->
+
+        val mObserver= Observer<Any?> {o ->
             observer.onChanged(o)
         }
+
+        liveDataMap[tag]?.observeForever(mObserver)
+
+        //onDestroy时解绑
+        owner.lifecycle.addObserver(object : LifecycleObserver{
+            @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+            fun onDestroy() {
+                liveDataMap[tag]?.removeObserver(mObserver)
+            }
+        })
     }
 
 }

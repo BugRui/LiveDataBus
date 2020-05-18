@@ -2,8 +2,7 @@ package com.bugrui.buslib.event
 
 import androidx.activity.ComponentActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.*
 import androidx.lifecycle.Observer
 import java.util.*
 
@@ -49,11 +48,22 @@ class StickinessEvent(
         if (!liveDataMap.containsKey(tag) || liveDataMap[tag] == null) {
             liveDataMap[tag] = MutableLiveData()
         }
-        liveDataMap[tag]?.observeForever { o ->
+
+        val mObserver= Observer<Any?> {o ->
             observer.onChanged(o)
             liveDataMap[tag] = MutableLiveData()
             subscribeForever(owner, observer)
         }
+
+        liveDataMap[tag]?.observeForever(mObserver)
+
+        //onDestroy时解绑
+        owner.lifecycle.addObserver(object : LifecycleObserver{
+            @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+            fun onDestroy() {
+                liveDataMap[tag]?.removeObserver(mObserver)
+            }
+        })
     }
 
 }
