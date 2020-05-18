@@ -1,8 +1,9 @@
 # LiveDataBus [![version](https://jitpack.io/v/BugRui/LiveDataBus.svg)](https://jitpack.io/#BugRui/LiveDataBus/1.2.0)
 
 ##### 基于LiveData实现事件总线,具备生命周期感知，感知确保LiveData仅更新处于活动生命周期状态的应用程序组件观察者，
-##### 支持粘性，消息发送后订阅也能收到发出的消息
-##### 注意！！！消息发送后，只有处于活动生命周期状态才会收到发出的消息。
+##### 支持粘性，消息发送后订阅也能收到发出的消息，但是只能收到订阅前发送的最后一条消息
+
+
 
 
 ### 集成
@@ -18,15 +19,21 @@ allprojects {
 ```
 ####  Step 2. Add the dependency
 ```
-  implementation 'com.github.BugRui:LiveDataBus:1.2.0'
+  implementation 'com.github.BugRui:LiveDataBus:1.2.1'
 ```
 
 
 ### 订阅普通事件消息
 ```
-
+//仅更新处于活动生命周期状态的应用程序组件观察者
 LiveDataBus.with("tag")
                 .observe(this, Observer {
+                    toast("收到普通事件消息：${it.toString()}")
+                })
+		
+//不受生命周期的影响，只要数据更新就会收到通知		
+LiveDataBus.with("tag")
+                .observeForever(this, Observer {
                     toast("收到普通事件消息：${it.toString()}")
                 })
 ```
@@ -38,8 +45,16 @@ LiveDataBus.with("tag")
 ```
 ## 订阅粘性事件消息
 ```
+
+//仅更新处于活动生命周期状态的应用程序组件观察者
 LiveDataBus.withStickiness("tag")
                 .observe(this, Observer {
+                    toast("收到粘性事件消息：${it.toString()}")
+                })
+		
+//不受生命周期的影响，只要数据更新就会收到通知	
+LiveDataBus.withStickiness("tag")
+                .observeForever(this, Observer {
                     toast("收到粘性事件消息：${it.toString()}")
                 })
 ```
