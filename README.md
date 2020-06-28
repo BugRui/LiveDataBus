@@ -27,8 +27,8 @@ allprojects {
 
 LiveDataBus有两种订阅的方式
 
-observe 仅更新处于活动生命周期状态的应用程序组件观察者
-observeForever 不受生命周期的影响，只要数据更新就会收到通知
+1，observe 仅更新处于活动生命周期状态的应用程序组件观察者
+2，observeForever 不受生命周期的影响，只要数据更新就会收到通知
 
 ```
 
