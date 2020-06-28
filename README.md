@@ -31,6 +31,8 @@ LiveDataBus有两种订阅的方式
 
 2，observeForever 不受生命周期的影响，只要数据更新就会收到通知
 
+tag订阅的标识，对应发送的tag，一对一
+
 ```
 
 LiveDataBus.with("tag")
