@@ -24,17 +24,22 @@ allprojects {
 
 
 ### 订阅普通事件消息
+
+LiveDataBus有两种订阅的方式
+
+observe 仅更新处于活动生命周期状态的应用程序组件观察者
+observeForever 不受生命周期的影响，只要数据更新就会收到通知
+
 ```
-//仅更新处于活动生命周期状态的应用程序组件观察者
+
 LiveDataBus.with("tag")
                 .observe(this, Observer {
-                    toast("收到普通事件消息：${it.toString()}")
+                    toast("仅更新处于活动生命周期状态的应用程序组件观察者：${it.toString()}")
                 })
 		
-//不受生命周期的影响，只要数据更新就会收到通知		
 LiveDataBus.with("tag")
                 .observeForever(this, Observer {
-                    toast("收到普通事件消息：${it.toString()}")
+                    toast("不受生命周期的影响，只要数据更新就会收到通知：${it.toString()}")
                 })
 ```
 
