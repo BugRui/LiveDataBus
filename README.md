@@ -1,9 +1,10 @@
 # LiveDataBus [![version](https://jitpack.io/v/BugRui/LiveDataBus.svg)](https://jitpack.io/#BugRui/LiveDataBus/1.2.0)
 
-##### 基于LiveData实现事件总线,具备生命周期感知，感知确保LiveData仅更新处于活动生命周期状态的应用程序组件观察者，
-##### 支持粘性，消息发送后订阅也能收到发出的消息，但是只能收到订阅前发送的最后一条消息
+基于LiveData实现事件总线,具备生命周期感知，感知确保LiveData仅更新处于活动生命周期状态的应用程序组件观察者，
+支持粘性，消息发送后订阅也能收到发出的消息，但是只能收到订阅前发送的最后一条消息
 
-
+Event bus based on LiveData, with life cycle awareness, awareness to ensure that LiveData only updates the observer of application components in the active life cycle state,
+Stickiness is supported. Subscriptions can also receive outgoing messages after the message is sent, but only the last message sent before the subscription is received
 
 
 ### 集成
