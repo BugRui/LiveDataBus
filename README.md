@@ -7,7 +7,7 @@ Event bus based on LiveData, with life cycle awareness, awareness to ensure that
 Stickiness is supported. Subscriptions can also receive outgoing messages after the message is sent, but only the last message sent before the subscription is received
 
 
-### 集成
+### 集成 integration
 #### Step 1. Add the JitPack repository to your build file
 ```
 allprojects {
@@ -24,9 +24,9 @@ allprojects {
 ```
 
 
-### 订阅普通事件消息
+### 订阅普通事件消息  Subscribe to regular event messages
 
-LiveDataBus有两种订阅的方式
+LiveDataBus有两种订阅的方式 LiveDataBus has two subscription options
 
 1，observe 仅更新处于活动生命周期状态的应用程序组件观察者
 
