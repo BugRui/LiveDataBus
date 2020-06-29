@@ -28,49 +28,50 @@ allprojects {
 
 LiveDataBus有两种订阅的方式 LiveDataBus has two subscription options
 
-1，observe 仅更新处于活动生命周期状态的应用程序组件观察者
+1，observe 仅更新处于活动生命周期状态的应用程序组件观察者 Only application component observers in the active lifecycle state are updated
 
-2，observeForever 不受生命周期的影响，只要数据更新就会收到通知
+2，observeForever 不受生命周期的影响，只要数据更新就会收到通知  It is unaffected by the life cycle and is notified whenever data is updated
 
 tag订阅的标识，对应发送的tag，一对一
+Tag subscribes to an identity that corresponds to the tag being sent, one to one
 
 ```
 
 LiveDataBus.with("tag")
                 .observe(this, Observer {
-                    toast("仅更新处于活动生命周期状态的应用程序组件观察者：${it.toString()}")
+                    toast("messages：${it.toString()}")
                 })
 		
 LiveDataBus.with("tag")
                 .observeForever(this, Observer {
-                    toast("不受生命周期的影响，只要数据更新就会收到通知：${it.toString()}")
+                    toast("messages：${it.toString()}")
                 })
 ```
 
-### 发送普通事件消息
+### 发送普通事件消息  send regular event messages
 ```
- LiveDataBus.send("tag", "发送一条消息")
+ LiveDataBus.send("tag", "message")
 
 ```
-## 订阅粘性事件消息
+## 订阅粘性事件消息  Subscribe to sticky event messages
 ```
 
-//仅更新处于活动生命周期状态的应用程序组件观察者
+//仅更新处于活动生命周期状态的应用程序组件观察者 Only application component observers in the active lifecycle state are updated
 LiveDataBus.withStickiness("tag")
                 .observe(this, Observer {
-                    toast("收到粘性事件消息：${it.toString()}")
+                    toast("message：${it.toString()}")
                 })
 		
-//不受生命周期的影响，只要数据更新就会收到通知	
+//不受生命周期的影响，只要数据更新就会收到通知  It is unaffected by the life cycle and is notified whenever data is updated	 
 LiveDataBus.withStickiness("tag")
                 .observeForever(this, Observer {
-                    toast("收到粘性事件消息：${it.toString()}")
+                    toast("message：${it.toString()}")
                 })
 ```
 
-### 发送粘性事件消息
+### 发送粘性事件消息  Send a sticky event message
 ```
- LiveDataBus.sendStickiness("tag", "发送一条消息")
+ LiveDataBus.sendStickiness("tag", "message")
 ```
 
 
