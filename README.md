@@ -45,12 +45,12 @@ LiveDataBus.with("tag")
                 })
 ```
 
-### 发送普通事件消息  send regular event messages
+### 发送普通事件消息  send 
 ```
  LiveDataBus.send("tag", "message")
 
 ```
-## 订阅粘性事件消息  Subscribe to sticky event messages
+## 订阅粘性事件消息  sticky
 ```
 
 //仅更新处于活动生命周期状态的应用程序组件观察者 
@@ -66,7 +66,7 @@ LiveDataBus.withStickiness("tag")
                 })
 ```
 
-### 发送粘性事件消息  Send a sticky event message
+### 发送粘性事件消息  sticky
 ```
  LiveDataBus.sendStickiness("tag", "message")
 ```
